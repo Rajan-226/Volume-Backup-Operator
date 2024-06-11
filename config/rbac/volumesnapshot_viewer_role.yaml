@@ -1,0 +1,23 @@
+# permissions for end users to view volumesnapshots.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: volume-backup-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: volumesnapshot-viewer-role
+rules:
+- apiGroups:
+  - backup.k8s.io
+  resources:
+  - volumesnapshots
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - backup.k8s.io
+  resources:
+  - volumesnapshots/status
+  verbs:
+  - get
