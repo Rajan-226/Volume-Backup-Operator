@@ -1,9 +1,5 @@
 # volume-backup-operator
-// TODO(user): Add simple overview of use/purpose
-
-## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
-
+This operator takes selector labels to select all the volumes with those labels and then create snapshots for all.
 
 ## Getting Started
 
@@ -24,6 +20,9 @@
 - make install
 
 - make run
+
+Use https://kubernetes.io/docs/concepts/storage/persistent-volumes/#volume-snapshot-and-restore-volume-from-snapshot-support for restoring the snapshot to create a pvc again.
+
 
 ```
 ### Prerequisites

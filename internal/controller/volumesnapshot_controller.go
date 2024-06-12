@@ -98,7 +98,7 @@ func (r *VolumeSnapshotReconciler) getPVCList(ctx context.Context, vsObject *bac
 
 	if err != nil {
 		return nil, err
-	}isPresent(ctx context.Context, pvc corev1.PersistentVolumeClaim) (bool, error) {
+	}
 
 	return pvcList, nil
 }
