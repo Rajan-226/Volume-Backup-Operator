@@ -1,11 +1,52 @@
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  labels:
-    app.kubernetes.io/name: volume-backup-operator
-    app.kubernetes.io/managed-by: kustomize
   name: manager-role
 rules:
-- apiGroups: [""]
-  resources: ["pods"]
-  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - backup.infra.dev
+  resources:
+  - volumebackups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - backup.infra.dev
+  resources:
+  - volumebackups/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - backup.infra.dev
+  resources:
+  - volumebackups/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - backup.infra.dev=volumesnapshots
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - backup.infra.dev=volumesnapshots/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - backup.infra.dev=volumesnapshots/status
+  verbs:
+  - get
+  - patch
+  - update

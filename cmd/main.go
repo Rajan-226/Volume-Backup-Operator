@@ -20,7 +20,6 @@ import (
 	"crypto/tls"
 	"flag"
 	"os"
-	"context"
 
 	// Import all Kubernetes client auth plugins (e.g. Azure, GCP, OIDC, etc.)
 	// to ensure that exec-entrypoint and run can make use of them.
@@ -37,6 +36,7 @@ import (
 
 	backupv1 "github.com/Rajan-226/volume-snapshot-operator/api/v1"
 	"github.com/Rajan-226/volume-snapshot-operator/internal/controller"
+	snapv1 "github.com/kubernetes-csi/external-snapshotter/client/v7/apis/volumesnapshot/v1"
 	// +kubebuilder:scaffold:imports
 )
 
@@ -50,11 +50,11 @@ func init() {
 
 	utilruntime.Must(backupv1.AddToScheme(scheme))
 	// +kubebuilder:scaffold:scheme
+
+	utilruntime.Must(snapv1.AddToScheme(scheme))
 }
 
 func main() {
-	ctx := context.Background()
-
 	var metricsAddr string
 	var enableLeaderElection bool
 	var probeAddr string
@@ -136,7 +136,6 @@ func main() {
 	if err = (&controller.VolumeSnapshotReconciler{
 		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
-		Ctx: ctx,
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "VolumeSnapshot")
 		os.Exit(1)

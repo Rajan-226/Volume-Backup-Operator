@@ -8,7 +8,7 @@ metadata:
   name: volumesnapshot-viewer-role
 rules:
 - apiGroups:
-  - backup.k8s.io
+  - backup.infra.dev
   resources:
   - volumesnapshots
   verbs:
@@ -16,7 +16,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - backup.k8s.io
+  - backup.infra.dev
   resources:
   - volumesnapshots/status
   verbs:

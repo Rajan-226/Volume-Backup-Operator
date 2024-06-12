@@ -8,7 +8,7 @@ metadata:
   name: volumesnapshot-editor-role
 rules:
 - apiGroups:
-  - backup.k8s.io
+  - backup.infra.dev
   resources:
   - volumesnapshots
   verbs:
@@ -20,7 +20,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - backup.k8s.io
+  - backup.infra.dev
   resources:
   - volumesnapshots/status
   verbs:

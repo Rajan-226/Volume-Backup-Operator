@@ -33,9 +33,9 @@ type VolumeBackupReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-// +kubebuilder:rbac:groups=backup.k8s.io,resources=volumebackups,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=backup.k8s.io,resources=volumebackups/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=backup.k8s.io,resources=volumebackups/finalizers,verbs=update
+// +kubebuilder:rbac:groups=backup.infra.dev,resources=volumebackups,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=backup.infra.dev,resources=volumebackups/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=backup.infra.dev,resources=volumebackups/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.

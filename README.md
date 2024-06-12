@@ -12,12 +12,18 @@
 #### KubeBuilder
 
 ```
-- kubebuilder init --domain k8s.io --repo github.com/Rajan-226/volume-snapshot-operator
+# Don't use k8.io as it's reserved
+- kubebuilder init --domain infra.dev --repo github.com/Rajan-226/volume-snapshot-operator
 
 - kubebuilder create api --group backup --version v1 --kind VolumeBackup
 
 - kubebuilder create api --group backup --version v1 --kind VolumeSnapshot
 
+- make
+
+- make install
+
+- make run
 
 ```
 ### Prerequisites
